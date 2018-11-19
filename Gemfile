@@ -8,8 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -40,13 +38,17 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
 gem 'devise'
-group :development do 
-   gem 'sqlite3'    #gem to use in development environment
-end
 
-group :production do 
-  gem 'pg'         #gem to use in production environment
-end
+  group :development, :test do
+    gem 'sqlite3'
+    gem 'rspec-rails'
+  end
+
+  group :production do
+    gem 'pg', '~> 0.11'
+    gem 'rails_12factor'
+  end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
