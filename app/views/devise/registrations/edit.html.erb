@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h1>Account Settings</h1>
 
-  <% if resource.artist.present? %>
+  <% if resource&.artist.present? %>
     <h3>Manage Artist page</h3>
     <%= link_to("Manage Artist: #{resource.artist.name}", artist_path(resource.artist)) %>
   <% end %>
