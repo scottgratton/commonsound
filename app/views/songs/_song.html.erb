@@ -1,9 +1,14 @@
 <div>
   <tr>
     <td class="align-middle"><p><strong><%= song.title %></strong></p></td>
-    <td class="align-middle"><p><strong><%= song.artist %></strong></p></td>
+    <td class="align-middle">
+      <p><strong>
+        <% if song.artist.present? %>
+          <%= link_to(song.artist&.name, artist_path(song.artist)) %>
+        <% end %>
+      </strong></p></td>
     <td>
-      <audio id="player" controls>
+      <audio controls>
         <source src="<%= song.track.url %>" type="audio/mp3">
       </audio>
     </td>

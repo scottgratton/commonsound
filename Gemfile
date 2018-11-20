@@ -38,6 +38,8 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
 gem 'devise'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'pry'
 
   group :development, :test do
     gem 'sqlite3'
