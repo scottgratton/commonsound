@@ -3,7 +3,7 @@
     <td class="align-middle"><p><strong><%= song.title %></strong></p></td>
     <td class="align-middle"><p><strong><%= song.artist %></strong></p></td>
     <td>
-      <audio controls>
+      <audio id="player" controls>
         <source src="<%= song.track.url %>" type="audio/mp3">
       </audio>
     </td>
