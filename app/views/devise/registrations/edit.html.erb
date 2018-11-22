@@ -3,7 +3,7 @@
 
   <% if resource&.artist.present? %>
     <h3>Manage Artist page</h3>
-    <%= link_to("Manage Artist: #{resource.artist.name}", artist_path(resource.artist)) %>
+    <%= link_to("Manage Artist: #{resource.artist.name}", edit_artist_path(resource.artist)) %>
   <% end %>
   <h4>Edit <%= resource_name.to_s.humanize %></h4>
 

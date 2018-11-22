@@ -1,0 +1,40 @@
+<h1>Update your artist profile</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5 col-md-offset-3 border">
+        <%= form_for(@artist) do |f| %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :location %>
+        <%= f.text_field :location, class: 'form-control' %>
+
+        <%= f.label :website %>
+        <%= f.text_field :website, class: 'form-control' %>
+
+        <%= f.label :bio, "Confirmation" %>
+        <%= f.text_area :bio, class: 'form-control' %>
+
+        <%= f.submit "Save changes", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+    <div class="col-7 border">
+      <h4>Current Songs</h4>
+        <table>
+          <% @artist.songs.each do |song| %>
+            <tr>
+              <td class="align-middle"><p><strong><%= song.title %></strong></p></td>
+              <td>
+                <audio controls>
+                  <source src="<%= song.track.url %>" type="audio/mp3">
+                </audio>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <p><%= link_to 'Add song', new_song_path(artist: @artist) %></p>
+    </div>
+  </div>
+</div>

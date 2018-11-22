@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
     end
 
     def show
-        @artist = Artist.find(params["id"])
+        @artist = Artist.find(params['id'])
         @songs = Song.where(artist: @artist)
     end
     
@@ -21,6 +21,20 @@ class ArtistsController < ApplicationController
           render :new
         end
     end
+
+    def edit
+        @artist = Artist.find(params['id'])
+    end
+
+    def update
+        @artist = Artist.find(params['id'])
+        if @artist.update_attributes(artist_params)
+          flash[:success] = "Artist updated"
+          redirect_to @artist
+        else
+          render 'edit'
+        end
+      end
     
     private
     
