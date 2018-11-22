@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -40,6 +40,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'pry'
+
+gem 'bootsnap', require: false
 
   group :development, :test do
     gem 'sqlite3'
