@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h1><%= @artist.name %></h1>
  
-  <% if current_user == @artist.user %>
+  <% if current_user.present && current_user == @artist.user %>
     <p><%= link_to 'Add song', new_song_path(artist: @artist) %></p>
   <% end %>
 
