@@ -1,18 +1,16 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Location</th>
-      <th scope="col">Bio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @artists.each do |artist| %>
-    <tr>
-      <td><%= link_to(artist&.name, artist_path(artist)) %></td>
-      <td><%= artist&.location %></td>
-      <td><%= artist&.bio %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+
+
+<div class="card-columns">
+  <% @artists.each do |artist| %>
+    <div class="card">
+      <% if artist.image.attachment.present? %>
+        <%= image_tag(artist.image, class: 'card-img-top', alt: 'Card image cap') %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to(artist&.name, artist_path(artist)) %></h5>
+        <small><i><p class="card-text"><%= artist&.location %></p></i></small>
+        <small><p class="card-text"><%= artist&.bio %></p></small>
+      </div>
+    </div>
+  <% end %>
+</div>

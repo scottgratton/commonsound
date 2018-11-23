@@ -1,13 +1,13 @@
   <div class="container-fluid">
     <div class="row">
-      <div class="col-5">
+      <div class="col-sm-5">
         <h1><%= @artist.name %></h1>
         <% if @artist.image.attachment.present? %>
           <%= image_tag(@artist.image, class: 'img-fluid') %>
         <% end %>
       </div>
       <div class="col-7">
-        <table class="table table-hover">
+        <table class="table table-hover table-sm table-responsive-sm">
           <tbody>
             <%= render @songs %>
           </tbody>
