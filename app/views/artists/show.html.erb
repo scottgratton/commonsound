@@ -3,7 +3,7 @@
       <div class="col-5">
         <h1><%= @artist.name %></h1>
         <% if @artist.image.attachment.present? %>
-          <%= image_tag(@artist.image) %>
+          <%= image_tag(@artist.image, class: 'img-fluid') %>
         <% end %>
       </div>
       <div class="col-7">

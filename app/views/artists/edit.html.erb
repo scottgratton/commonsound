@@ -18,7 +18,7 @@
         <%= f.text_area :bio, class: 'form-control' %>
 
         <% if @artist.image.attachment.present? %>
-          <%= image_tag(@artist.image) %></br>
+          <%= image_tag(@artist.image, class: 'img-fluid') %><br>
         <% end %>        
         <%= f.label :image %>
         <%= f.file_field :image, class: 'form-control' %>
@@ -40,6 +40,7 @@
             </tr>
           <% end %>
         </table>
+      <p><%= link_to 'Add album', new_album_path(artist: @artist) %></p>
       <p><%= link_to 'Add song', new_song_path(artist: @artist) %></p>
     </div>
   </div>
