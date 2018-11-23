@@ -28,8 +28,7 @@ class ArtistsController < ApplicationController
 
     def update
         @artist = Artist.find(params['id'])
-        if @artist.update_attributes(artist_params) &&
-            @artist.image.attach(artist_params[:image])
+        if @artist.update_attributes(artist_params) && attach_image
           flash[:success] = "Artist updated"
           redirect_to @artist
         else
@@ -38,6 +37,12 @@ class ArtistsController < ApplicationController
       end
     
     private
+
+    def attach_image
+        @artist.image.attach(artist_params[:image]) if artist_params[:image].present?
+        true
+    end
+
     
     def artist_params
         params.require(:artist).permit(:name, :website, :bio, :location, :image)

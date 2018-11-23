@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_054403) do
+ActiveRecord::Schema.define(version: 2018_11_23_015510) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2018_11_22_054403) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "albums", force: :cascade do |t|
+    t.string "title"
+    t.string "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "website"
@@ -50,6 +57,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_054403) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "artist_id"
+    t.integer "album_id"
   end
 
   create_table "taggings", force: :cascade do |t|

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :songs, only: %i[new create index]
   resources :artists
+  resources :albums
 
   root 'songs#index'
 end
