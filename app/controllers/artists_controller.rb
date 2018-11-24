@@ -8,11 +8,11 @@ class ArtistsController < ApplicationController
         @artist = Artist.find(params['id'])
         @songs = Song.where(artist: @artist)
     end
-    
+
     def new
         @artist = Artist.new
     end
-    
+
     def create
         @artist = Artist.new song_params
         if @artist.save
@@ -35,15 +35,16 @@ class ArtistsController < ApplicationController
           render 'edit'
         end
       end
-    
+
     private
 
     def attach_image
+        @artist.image.purge
         @artist.image.attach(artist_params[:image]) if artist_params[:image].present?
         true
     end
 
-    
+
     def artist_params
         params.require(:artist).permit(:name, :website, :bio, :location, :image)
     end
