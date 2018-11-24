@@ -8,6 +8,11 @@
   </div>
 
   <div>
+    <%= f.label :album %>
+    <%= f.collection_select :album, @artist.albums, :album_id, :title %>
+  </div>
+
+  <div>
     <%= f.label :track %>
     <%= f.file_field :track %>
   </div>

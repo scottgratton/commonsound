@@ -5,21 +5,31 @@
     <div class="col-md-5 col-md-offset-3 border">
         <%= form_for(@artist) do |f| %>
 
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
-
-        <%= f.label :location %>
-        <%= f.text_field :location, class: 'form-control' %>
-
-        <%= f.label :website %>
-        <%= f.text_field :website, class: 'form-control' %>
+        <div class="form-group row">
+          <%= f.label :name, class: 'col-3 col-form-label'%>
+            <div class="col-9">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label :location, class: 'col-3 col-form-label'%>
+            <div class="col-9">
+              <%= f.text_field :location, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label :website, class: 'col-3 col-form-label'%>
+            <div class="col-9">
+              <%= f.text_field :website, class: 'form-control' %>
+            </div>
+        </div>
 
         <%= f.label :bio %>
         <%= f.text_area :bio, class: 'form-control' %>
 
         <% if @artist.image.attachment.present? %>
           <%= image_tag(@artist.image, class: 'img-fluid') %><br>
-        <% end %>        
+        <% end %>
         <%= f.label :image %>
         <%= f.file_field :image, class: 'form-control' %>
 
@@ -28,18 +38,24 @@
     </div>
     <div class="col-7 border">
       <h4>Current Songs</h4>
-        <table>
-          <% @artist.songs.each do |song| %>
-            <tr>
-              <td class="align-middle"><p><strong><%= song.title %></strong></p></td>
-              <td>
-                <audio controls>
-                  <source src="<%= song.track.url %>" type="audio/mp3">
-                </audio>
-              </td>
-            </tr>
-          <% end %>
-        </table>
+        <div class="border rounded">
+          <table>
+            <% @artist.albums.each do |album| %>
+                <h6><%= album.title %></h6>
+                <hr>
+                <% album.songs.each do |song| %>
+                  <tr>
+                    <td class="align-middle"><p><strong><%= song.title %></strong></p></td>
+                    <td>
+                      <audio controls>
+                        <source src="<%= song.track.url %>" type="audio/mp3">
+                      </audio>
+                    </td>
+                  </tr>
+                <% end %>
+            <% end %>
+          </table>
+        </div>
       <p><%= link_to 'Add album', new_album_path(artist: @artist) %></p>
       <p><%= link_to 'Add song', new_song_path(artist: @artist) %></p>
     </div>

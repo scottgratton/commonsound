@@ -10,7 +10,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new album_params
     if @album.save
-      redirect_to artist_path(@album.artist)
+      redirect_to edit_artist_path(@album.artist)
     else
       render :new
     end
@@ -22,10 +22,9 @@ class AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params['id'])
-    binding.pry
     if @album.update_attributes(album_params) && attach_image
       flash[:success] = "Album updated"
-      redirect_to @album.artist
+      redirect_to edit_artist_path(@album.artist)
     else
       render 'edit'
     end
