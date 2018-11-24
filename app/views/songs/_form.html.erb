@@ -9,7 +9,7 @@
 
   <div>
     <%= f.label :album %>
-    <%= f.collection_select :album, @artist.albums, :album_id, :title %>
+    <%= f.collection_select :album_id, @artist.albums, :id, :title %>
   </div>
 
   <div>
@@ -19,3 +19,5 @@
 
   <%= f.submit %>
 <% end %>
+
+<%= link_to("Back", edit_artist_path(@artist)) %>
