@@ -1,14 +1,14 @@
 class SongsController < ApplicationController
-  
+
   def index
       @songs = Song.all
   end
-  
+
   def new
       @song = Song.new
       @artist = Artist.find(params['artist'])
   end
-  
+
   def create
       @song = Song.new song_params
       if @song.save
@@ -17,7 +17,7 @@ class SongsController < ApplicationController
         render :new
       end
   end
-  
+
   private
 
   def song_params

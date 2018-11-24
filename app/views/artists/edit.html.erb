@@ -41,7 +41,10 @@
         <div class="border rounded">
           <table>
             <% @artist.albums.each do |album| %>
-                <h6><%= album.title %></h6>
+                <h6>
+                  <%= album.title %>
+                  <span><%= link_to 'Edit', edit_album_path(album), class: 'btn btn-sm btn-primary' %></span>
+                </h6>
                 <hr>
                 <% album.songs.each do |song| %>
                   <tr>
